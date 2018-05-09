@@ -22,13 +22,13 @@ Games for teaching computer science at the university level
 - 
 ## Game Ideas
 1. Algorithm/Procedure Based Game
-  - ex. Human Resource Machine
+   - ex. Human Resource Machine
 2. Quiz Game
-  - Gain points for your class (may boost your assignment marks)
-  - Verse other students in the class (during class over Wi-Fi)
+   - Gain points for your class (may boost your assignment marks)
+   - Verse other students in the class (during class over Wi-Fi)
 3. RPG
-  - Character movement based coding
-  - Possibly OOP
+   - Character movement based coding
+   - Possibly OOP
 
 ## Months Goal Milestones
 1. 
