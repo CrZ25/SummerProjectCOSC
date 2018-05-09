@@ -1,10 +1,37 @@
 # SummerProjectCOSC
 Games for teaching computer science at the university level 
-Unity 2d Kenney, IStock for source 
-Vaibhav R. Kumar is the team leader 
-Before next week, learn how to use to use unity 2d 
-1. Human Resource Machine 
-2. Question and Answer, get points, go to next level 
-3. rpg 
+## Game Engine
+- Unity2D
+## Game Artwork
+- Kenney (https://kenney.nl/assets)
+- iStock
+## Goals
+### May 15, 2018
+- Learn how to use to use Unity2D's Basic Functions
+### May 22, 2018
+- 
+### May 29, 2018
+- 
+### June 5, 2018
+- 
+### June 12, 2018
+- 
+### June 19, 2018
+- 
+### June 26, 2018
+- 
+## Game Ideas
+1. Algorithm/Procedure Based Game
+  - ex. Human Resource Machine
+2. Quiz Game
+  - Gain points for your class (may boost your assignment marks)
+  - Verse other students in the class (during class over Wi-Fi)
+3. RPG
+  - Character movement based coding
+  - Possibly OOP
 
-Months 1. 2. 3. 4.
+## Months Goal Milestones
+1. 
+2. 
+3. 
+4.
