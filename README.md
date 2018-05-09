@@ -1,4 +1,4 @@
-# SummerProjectCOSC
+# Summer Project COSC - Games for Teaching
 Games for teaching computer science at the university level 
 ## Game Engine
 - Unity2D
