@@ -18,7 +18,7 @@ Games for teaching computer science at the university level
      4. Finding error in the code
      5. Correct output
      
-2. ~~Algorithm/Procedure Based Game ~~
+2. ~~Algorithm/Procedure Based Game~~
    - ~~ex. Human Resource Machine~~
 3. ~~RPG~~
    - ~~Character movement based coding~~
