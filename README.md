@@ -2,6 +2,7 @@
 Games for teaching computer science at the university level 
 ## Game Engine
 - Unity2D
+- Slick2D + LWJGL
 ## Game Artwork
 - Kenney (https://kenney.nl/assets)
 - iStock
