@@ -11,9 +11,9 @@ Games for teaching computer science at the university level
 1. Quiz Game
    - Gain points for your class (may boost your assignment marks)
    - Verse other students in the class (during class over Wi-Fi)
-   - Question type:
+   - Question Types:
      1. Multiple choice
-     2. Looking the graph choose the right answer
+     2. Analyzing graph for correct answer
      3. Fill in blank
      4. Finding error in the code
      5. Correct output
