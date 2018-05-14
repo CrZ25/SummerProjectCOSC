@@ -1,18 +1,19 @@
 # Summer Project COSC - Games for Teaching
 Games for teaching computer science at the university level 
 ## Game Engine
-- Unity2D
+- processing
 - Slick2D + LWJGL || http://slick.ninjacave.com/ || https://www.lwjgl.org/ ||
 
 ## Game Artwork
 - Kenney (https://kenney.nl/assets)
 - iStock
 ## Game Ideas
-1. Algorithm/Procedure Based Game
-   - ex. Human Resource Machine
-2. Quiz Game
+1. Quiz Game
    - Gain points for your class (may boost your assignment marks)
    - Verse other students in the class (during class over Wi-Fi)
-3. RPG
-   - Character movement based coding
-   - Possibly OOP
+   Question type:
+   1.multiple choice
+   2.looking the graph choose the right answer
+   3.fill in blank
+   4.finding error in the code
+   5.correct output
