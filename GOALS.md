@@ -1,6 +1,6 @@
 # Goals
 ### May 15, 2018
-- Learn how to use to use Unity2D's Basic Functions
+- ~~Learn how to use to use Unity2D's Basic Functions~~
 ### May 22, 2018
 - Everyone do one type of the question type
 ### May 29, 2018
