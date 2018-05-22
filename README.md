@@ -28,7 +28,7 @@ Games for teaching computer science at the university level
    - user has to set conditionals to pass through the obstacles
    - progressively gets harder and more programming functions are used
    - ![Example](https://github.com/CrZ25/SummerProjectCOSC/blob/master/example%234.png)
-5.Topdowmn games
+5.2d Tower Defence game(Topdowmn)
   - user write code to create weapon to eliminate enemy.
   - enemy level increased by the wave
   - if u write code in correct order, ur weapon level will increase
