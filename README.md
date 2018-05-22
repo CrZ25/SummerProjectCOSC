@@ -30,3 +30,6 @@ Games for teaching computer science at the university level
    - ![Example](https://github.com/CrZ25/SummerProjectCOSC/blob/master/example%234.png)
 5.Topdowmn games
   - user write code to create weapon to eliminate enemy.
+  - enemy level increased by the wave
+  - if u write code in correct order, ur weapon level will increase
+  - so put the code in correct order to win the game
