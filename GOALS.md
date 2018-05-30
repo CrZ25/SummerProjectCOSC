@@ -6,7 +6,9 @@
 - We need to focus on one programming topic (e.g. if-else, arrays with loops, etc).
 - when choosing a game style, think about what motivates ppl to play (e.g. challenge? points? recognition? competition?) 
 ### May 22, 2018
-- Everyone do one type of the question type
+- choose a game for each team
+- basic design of the game
+- language, algorithem, lib/api
 ### May 29, 2018
 - 
 ### June 5, 2018
