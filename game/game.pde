@@ -4,7 +4,7 @@ PImage enemy1;
 float x = 90, y = 95;
 
 void setup() {
-  frameRate(1);
+  frameRate(60);
   size(746, 480);
   map= loadImage("map1.jpg");
   weapon1 = loadImage("towerDefense_tile203.png");
@@ -20,30 +20,60 @@ void draw() {
   image(weapon2, 45, 55);
   image(weapon3, -5, 110);
   image(weapon4, 45, 110);
-  CreateEnemy(x, y);
+  image(enemy1, x, y);
+  
+  if (x < 310.0 && y == 95) {
+    x = x + 0.1;
+    image(enemy1, x, y);
+  }
+  
+  if (y < 400.0 && x == 310.0) {
+    y = y + 0.1;
+    image(enemy1, x, y);
+  }
+  
+  if (x < 540.0 && y == 400.0) {
+    x = x + 0.1;
+    image(enemy1, x, y);
+  }
+  
+  if (y > 200.0 && x == 540.0) {
+    y = y - 0.1;
+    image(enemy1, x, y);
+  }
+  
+  if (x < 768.0 && y == 200.0) {
+    x = x + 0.1;
+    image(enemy1, x, y);
+  }
+  //CreateEnemy(x, y);
 }
 
 void CreateEnemy(float x, float y) {
   image(map, 0, 0);
 
   image(enemy1, x, y);
-  while (x < 310.0) {
-    x = x + 0.1; 
-    image(enemy1, x, y);
-  }
-  while (y < 400.0) {
-    y = y + 0.1;
-    image(enemy1, x, y);
-  }
-  while (x < 540.0) {
+  if (x < 310.0) {
     x = x + 0.1;
     image(enemy1, x, y);
   }
-  while (y > 200.0) {
+  
+  if (y < 400.0) {
+    y = y + 0.1;
+    image(enemy1, x, y);
+  }
+  
+  if (x < 540.0) {
+    x = x + 0.1;
+    image(enemy1, x, y);
+  }
+  
+  if (y > 200.0) {
     y = y - 0.1;
     image(enemy1, x, y);
   }
-  while (x < 768.0) {
+  
+  if (x < 768.0) {
     x = x + 0.1;
     image(enemy1, x, y);
   }
