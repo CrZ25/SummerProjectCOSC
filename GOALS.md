@@ -11,11 +11,13 @@
 - language, algorithem, lib/api
 ### May 29, 2018
 - 
-### June 5, 2018
+### June 6, 2018
+- Work on 
+  - 2D Map Array
+  - Enemy movement/Object
+### June 13, 2018
 - 
-### June 12, 2018
-- 
-### June 19, 2018
+### June 20, 2018
 - 
 ### June 26, 2018
 - 
