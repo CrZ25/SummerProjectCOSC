@@ -9,8 +9,6 @@
 - choose a game for each team
 - basic design of the game
 - language, algorithem, lib/api
-### May 29, 2018
-- 
 ### June 6, 2018
 - Work on 
   - 2D Map Array
