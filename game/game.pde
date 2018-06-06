@@ -5,9 +5,10 @@ PImage enemy1;
 float x, y;
 final int w = 10, h = 8;
 
-// 
+// textures for map
 PImage[] mapTextures = new PImage[14];
 
+// map array 1
 int mapArr[][] = {
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {1, 1, 1, 1, 2, 0, 0, 0, 0, 0}, 
@@ -21,7 +22,7 @@ int mapArr[][] = {
 //new int[w][h];
 
 void setup() {
-  frameRate(360);
+  frameRate(60);
   // width  : 128px for the weapons menu
   // width  : 640px for actual map
   // height : 512px (64 * 8)
@@ -45,12 +46,8 @@ void setup() {
 
 void draw() {  
   drawMap1();
-  // loading up sidebar weapons
-  for (int i = 0; i < weapons.length * 3 / 4; i++) {
-    image(weapons[i], 640, (i + 1) * 64);
-    image(weapons[i + 1], 704, (i + 1) * 64);
-  }
-
+  drawWeapons(weapons.length);
+  
   //image(enemy1, x, y);
 
   // CreateEnemy(x, y);

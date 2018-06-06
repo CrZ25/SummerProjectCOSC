@@ -9,3 +9,20 @@ void drawMap1() {
   // sidebar
   image(sideBar, 640, 0);
 }
+
+void drawWeapons(int unlocked) {
+  unlocked--;
+  switch (unlocked) {
+    case 3:
+      image(weapons[3], 704, 128);
+    case 2:
+      image(weapons[2], 640, 128);
+    case 1:
+      image(weapons[1], 704, 64);
+    case 0:
+      image(weapons[0], 640, 64);
+      break;
+    default:
+      break;
+  }
+}
