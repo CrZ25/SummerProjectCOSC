@@ -1,15 +1,14 @@
 PImage sideBar;
 PImage[] weapons = new PImage[4];
 PImage grass1, mapWeapon, horTopRoad;
-PImage enemy0;
+PImage enemy1;
 float x, y;
-Enemy enemies;
-
 final int w = 10, h = 8;
-
+Enemy a = new Enemy(x, y);
+int count=0;
 // textures for map
 PImage[] mapTextures = new PImage[14];
-
+int weapon;
 // map array 1
 int mapArr[][] = {
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
@@ -29,8 +28,8 @@ void setup() {
   // width  : 640px for actual map
   // height : 512px (64 * 8)
   size(768, 512);
-  x = 90;
-  y = 95;
+  x = 0;
+  y = 130;
 
   sideBar = loadImage("sideBar.png");
 
@@ -43,14 +42,31 @@ void setup() {
     weapons[i] = loadImage("weap" + i + ".png");
   }
 
-  enemy0 = loadImage("enemy0.png");
+  enemy1 = loadImage("enemy0.png");
 }
 
 void draw() {  
   drawMap1();
   drawWeapons(weapons.length);
-  
-  image(enemy0, x, y);
-
-  enemies.CreateEnemy(x, y);
+  weapon=judge();
+  a.CreateEnemy(enemy1, x, y);
+}
+void mouseDragged() { 
+  int weapon=judge();
+  switch (weapon) {
+  case 3:
+    image(weapons[3], mouseX, mouseY); 
+    break;
+  case 2:
+    image(weapons[2], mouseX, mouseY); 
+    break;
+  case 1:
+    image(weapons[1], mouseX, mouseY); 
+    break;
+  case 0:
+    image(weapons[0], mouseX, mouseY); 
+    break;
+  default:
+    break;
+  }
 }

@@ -7,41 +7,35 @@ class Enemy {
   float dirFacing;
 
   Enemy(float x, float y) {
+
     this.x = x;
     this.y = y;
   }
 
-  void CreateEnemy(float x, float y) {
-    image(enemy0, x, y);
 
-    while (x < 310.0) {
-      x = x + 0.1;
-      image(enemy0, x, y);
-      break;
-    }
+  void CreateEnemy(PImage e, float a, float b) {
 
-    while (y < 400.0) {
-      y = y + 0.1;
-      image(enemy0, x, y);
-      break;
-    }
 
-    while (x < 540.0) {
-      x = x + 0.1;
-      image(enemy0, x, y);
-      break;
-    }
+    image(e, a, b);
+    for (int j = 0; j < w; j++) {
+      for (int i = 0; i < h; i++) {
+        if (mapArr[i][j] == 3) {
 
-    while (y > 200.0) {
-      y = y - 0.1;
-      image(enemy0, x, y);
-      break;
-    }
+          while (x<j*64) {
+            x=a+0.5;
+            return;
+          } 
+          while (y>i*64) {
+            y=b-0.5;
+            return;
+          }
 
-    while (x < 768.0) {
-      x = x + 0.1;
-      image(enemy0, x, y);
-      break;
+          while (y<i*64) {
+            y=b+0.5;
+            return;
+          }
+        }
+      }
     }
   }
 }
