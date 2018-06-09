@@ -2,6 +2,7 @@ PImage sideBar;
 PImage[] weapons = new PImage[4];
 PImage grass1, mapWeapon, horTopRoad;
 PImage enemy1;
+Enemy[] enemies = new Enemy[5];
 float x, y;
 final int w = 10, h = 8;
 
@@ -41,14 +42,13 @@ void setup() {
     weapons[i] = loadImage("weap" + i + ".png");
   }
 
-  //enemy1 = loadImage("towerDefense_tile245.png");
 }
-
+/
 void draw() {  
   drawMap1();
   drawWeapons(weapons.length);
   
   //image(enemy1, x, y);
 
-  // CreateEnemy(x, y);
+  enemies[0].CreateEnemy(x, y);
 }

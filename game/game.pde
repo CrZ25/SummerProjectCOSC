@@ -2,10 +2,13 @@ PImage sideBar;
 PImage[] weapons = new PImage[4];
 PImage grass1, mapWeapon, horTopRoad;
 PImage enemy1;
+int weapon2 = -1;
+
+boolean mLock = false; // for drag and drop
 float x, y;
 final int w = 10, h = 8;
 Enemy a = new Enemy(x, y);
-int count=0;
+int count = 0;
 // textures for map
 PImage[] mapTextures = new PImage[14];
 int weapon;
@@ -37,7 +40,8 @@ void setup() {
   for (int i = 0; i < 14; i++) {
     mapTextures[i] = loadImage("map" + i + ".png");
   }
-
+  
+  // weapon tiles
   for (int i = 0; i < weapons.length; i++) {
     weapons[i] = loadImage("weap" + i + ".png");
   }
@@ -48,9 +52,10 @@ void setup() {
 void draw() {  
   drawMap1();
   drawWeapons(weapons.length);
-  weapon=judge();
+  weapon = judge();
   a.CreateEnemy(enemy1, x, y);
 }
+
 void mouseDragged() { 
   int weapon=judge();
   switch (weapon) {
