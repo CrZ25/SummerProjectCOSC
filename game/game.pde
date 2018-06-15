@@ -1,14 +1,13 @@
-PImage sideBar;
+PImage sideBar, menu;
 PImage[] weapons = new PImage[4];
 PImage grass1, mapWeapon, horTopRoad;
 PImage enemy1;
-int weapon2 = -1;
-
-boolean mLock = false; // for drag and drop
-float x, y;
+PImage Help;
+int count=0;
+float x=0, y=130;
 final int w = 10, h = 8;
-Enemy a = new Enemy(x, y);
-int count = 0;
+
+int Scene=0;
 // textures for map
 PImage[] mapTextures = new PImage[14];
 int weapon;
@@ -31,47 +30,44 @@ void setup() {
   // width  : 640px for actual map
   // height : 512px (64 * 8)
   size(768, 512);
-  x = 0;
-  y = 130;
-
   sideBar = loadImage("sideBar.png");
 
   // map tiles
   for (int i = 0; i < 14; i++) {
     mapTextures[i] = loadImage("map" + i + ".png");
   }
-  
-  // weapon tiles
+
   for (int i = 0; i < weapons.length; i++) {
     weapons[i] = loadImage("weap" + i + ".png");
   }
-
+  menu = loadImage("menu.png");
   enemy1 = loadImage("enemy0.png");
-}
+  Help = loadImage("help.png");
+  image(menu, 0, 0);                           //title page
+
+  }
+
 
 void draw() {  
-  drawMap1();
-  drawWeapons(weapons.length);
-  weapon = judge();
-  a.CreateEnemy(enemy1, x, y);
+  if(Scene==1){
+  Scene1();}
+  
 }
+void mouseClicked() {
+  if (Scene==0&&dist(mouseX, 462, 527, 462)<57&&dist(527, mouseY, 527, 462)<23) {
+    exit();
 
-void mouseDragged() { 
-  int weapon=judge();
-  switch (weapon) {
-  case 3:
-    image(weapons[3], mouseX, mouseY); 
-    break;
-  case 2:
-    image(weapons[2], mouseX, mouseY); 
-    break;
-  case 1:
-    image(weapons[1], mouseX, mouseY); 
-    break;
-  case 0:
-    image(weapons[0], mouseX, mouseY); 
-    break;
-  default:
-    break;
   }
+  if (Scene==0&&dist(mouseX,462, 663, 462)<57&&dist(663,mouseY,663,462)<23){
+    
+    Scene=1;
+  }
+  if (Scene==0&&dist(mouseX,32, 76, 32)<57&&dist(76,mouseY,76,32)<23){
+    Help();
+    Scene=-1;
+  }
+  if (Scene==-1&&dist(mouseX,470, 66, 470)<45&&dist(66,mouseY,66,470)<20){
+ 
+    image(menu, 0, 0); 
+    Scene=0;}
 }
