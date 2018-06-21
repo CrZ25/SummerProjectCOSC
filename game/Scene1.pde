@@ -1,14 +1,26 @@
-
+float x0=0, y0=130;
+float x1=-50, y1=130;
 void Scene1() {
   drawMap1();
   drawWeapons(weapons.length);
   weapon=judge();
-  Enemy A = new Enemy(enemy1,x, y);
+  Enemy A = new Enemy(enemy0,x0, y0,1);
+  //Enemy B = new Enemy(enemy1,x1, y1,3);
   A.CreateEnemy();
-  x=A.moveX();
-  y=A.moveY();
+ //B.CreateEnemy();
+  x0=A.moveX(x0,y0);
+  y0=A.moveY(x0,y0);
+  print(x0,y0);
+ // x1=B.moveX(x1,y1);
+ // y1=B.moveY(x1,y1);
   A.checkEnd();
+ // B.checkEnd();
   count++;
+}
+void reset(){
+  x0=0; y0=130;
+ x1=-20; y1=130;
+ count=0;
 }
 void mouseDragged() { 
   int weapon=judge();

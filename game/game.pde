@@ -1,10 +1,9 @@
-PImage sideBar, menu;
+PImage sideBar, menu, GameOver, Health;
 PImage[] weapons = new PImage[4];
 PImage grass1, mapWeapon, horTopRoad;
-PImage enemy1;
+PImage enemy0,enemy1,enemy2,enemy3;
 PImage Help;
 int count=0;
-float x=0, y=130;
 final int w = 10, h = 8;
 
 int Scene=0;
@@ -41,16 +40,26 @@ void setup() {
     weapons[i] = loadImage("weap" + i + ".png");
   }
   menu = loadImage("menu.png");
-  enemy1 = loadImage("enemy0.png");
+  enemy0 = loadImage("enemy0.png");
+  enemy1 = loadImage("enemy1.png");
+  enemy2 = loadImage("enemy2.png");
+  enemy3 = loadImage("enemy3.png");
   Help = loadImage("help.png");
-  image(menu, 0, 0);                           //title page
+  GameOver = loadImage("GameOver.jpg");
+  Health = loadImage("Health.png");
+                            
 
   }
 
 
-void draw() {  
+void draw() { 
+  if(Scene==0){
+  Menu();}
   if(Scene==1){
   Scene1();}
+  if(Scene==-10){
+  GameOver();}
+  
   
 }
 void mouseClicked() {
@@ -70,4 +79,5 @@ void mouseClicked() {
  
     image(menu, 0, 0); 
     Scene=0;}
+    
 }
