@@ -26,3 +26,19 @@ void drawWeapons(int unlocked) {
     break;
   }
 }
+<<<<<<< HEAD
+=======
+int judge() {
+  int weapon=-1;
+  if (dist(mouseX, mouseY, 704, 128)<32) {
+    weapon=3;
+  } else if (dist(mouseX, mouseY, 640, 128)<32) {
+    weapon=2;
+  } else if (dist(mouseX, mouseY, 704, 64)<32) {
+    weapon=1;
+  } else if (dist(mouseX, mouseY, 640, 64)<32) {
+    weapon=0;
+  }       
+  return weapon;
+}
+>>>>>>> 3f338b15214135fa93c841334a95175af95cfea1
