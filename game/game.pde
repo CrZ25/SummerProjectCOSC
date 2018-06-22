@@ -8,6 +8,7 @@ boolean mLock = false; // for drag and drop
 float x, y;
 final int w = 10, h = 8;
 Enemy a = new Enemy(x, y);
+ArrayList<Weapon> weaponArr = new ArrayList<Weapon>();
 int count = 0;
 // textures for map
 PImage[] mapTextures = new PImage[14];
@@ -33,31 +34,40 @@ void setup() {
   size(768, 512);
   x = 0;
   y = 130;
-
+  
+  imageMode(CENTER);
+  
   sideBar = loadImage("sideBar.png");
 
   // map tiles
   for (int i = 0; i < 14; i++) {
     mapTextures[i] = loadImage("map" + i + ".png");
   }
-  
+
   // weapon tiles
   for (int i = 0; i < weapons.length; i++) {
     weapons[i] = loadImage("weap" + i + ".png");
   }
-
+  
   enemy1 = loadImage("enemy0.png");
 }
+
+
 
 void draw() {  
   drawMap1();
   drawWeapons(weapons.length);
-  weapon = judge();
+  // weapon = judge();
   a.CreateEnemy(enemy1, x, y);
+  
+  for (Weapon weap : weaponArr) {
+    weap.display();
+  }
 }
-
+/*
 void mouseDragged() { 
-  int weapon=judge();
+  int weapon = judge();
+
   switch (weapon) {
   case 3:
     image(weapons[3], mouseX, mouseY); 
@@ -70,8 +80,9 @@ void mouseDragged() {
     break;
   case 0:
     image(weapons[0], mouseX, mouseY); 
-    break;
+    break; 
   default:
     break;
   }
 }
+*/
