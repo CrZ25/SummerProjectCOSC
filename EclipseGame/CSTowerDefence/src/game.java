@@ -1,4 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import processing.core.*;
 
 public class game extends PApplet {
@@ -21,9 +25,13 @@ public class game extends PApplet {
 	PImage[] mapTextures = new PImage[14];
 	int weapon;
 	// map array 1
-	int mapArr[][] = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 1, 1, 1, 1, 2, 0, 0, 0, 0, 0 },
-			{ 3, 3, 3, 3, 4, 5, 1, 1, 1, 1 }, { 6, 6, 7, 3, 4, 8, 3, 3, 3, 3 }, { 0, 0, 8, 3, 4, 8, 3, 9, 6, 6 },
-			{ 0, 0, 8, 3, 10, 11, 3, 4, 0, 0 }, { 0, 0, 8, 3, 3, 3, 3, 4, 0, 0 }, { 0, 0, 12, 6, 6, 6, 6, 13, 0, 0 } };
+	int mapArr[][] = new int[8][10];
+	/*
+	 * { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 1, 1, 1, 1, 2, 0, 0, 0, 0, 0 }, { 3, 3,
+	 * 3, 3, 4, 5, 1, 1, 1, 1 }, { 6, 6, 7, 3, 4, 8, 3, 3, 3, 3 }, { 0, 0, 8, 3, 4,
+	 * 8, 3, 9, 6, 6 }, { 0, 0, 8, 3, 10, 11, 3, 4, 0, 0 }, { 0, 0, 8, 3, 3, 3, 3,
+	 * 4, 0, 0 }, { 0, 0, 12, 6, 6, 6, 6, 13, 0, 0 } };
+	 */
 	// new int[w][h];
 
 	@Override
@@ -40,10 +48,18 @@ public class game extends PApplet {
 		smooth();
 
 		sideBar = loadImage("sideBar.png");
-
+		
 		// Load in Map Tiles
 		for (int i = 0; i < 14; i++) {
 			mapTextures[i] = loadImage("map" + i + ".png");
+		}
+
+		// Load in map
+		try {
+			mapLoad();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		// Load in Weapons
@@ -75,9 +91,14 @@ public class game extends PApplet {
 
 	public void draw() {
 		if (Scene == 1) {
-			Scene1();
+			try {
+				Scene1();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		
+
 		text(frameRate, 10, 10);
 	}
 
@@ -105,7 +126,7 @@ public class game extends PApplet {
 
 	// SCENE 1
 	// game level 1
-	void Scene1() {
+	void Scene1() throws FileNotFoundException {
 		drawMap1();
 		drawWeapons(weapons.length);
 		Enemy A = new Enemy(enemies[0], x0, y0, 1);
@@ -119,12 +140,12 @@ public class game extends PApplet {
 		// y1=B.moveY(x1,y1);
 		A.checkEnd();
 		// B.checkEnd();
-		
+
 		// display weapons when clicked
 		for (Weapon weap : weaponArr) {
 			weap.display();
 		}
-		
+
 		count++;
 	}
 
@@ -140,15 +161,32 @@ public class game extends PApplet {
 	// MAP
 	// Drawing MAP 1
 	void drawMap1() {
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 10; j++) {
-				image(mapTextures[mapArr[i][j]], j * 64, i * 64);
+		for (int row = 0; row < mapArr.length; row++) {
+			for (int col = 0; col < mapArr[row].length; col++) {
+				image(mapTextures[mapArr[row][col]], col * 64, row * 64);
+				// System.out.print(mapArr[row][col] + "\t");
 				// print(mapArr[i][j] + ",\t"); // for debugging the array
 			}
 			// println();
 		}
-		// sidebar
+		// UI Sidebar
 		image(sideBar, 640, 0);
+	}
+
+	// MAP
+	// Load map in from text file
+	void mapLoad() throws FileNotFoundException {
+		File file = new File("src/maps/map00.txt");
+		System.out.println("'File Loaded'");
+		Scanner s = new Scanner(file);
+		for (int row = 0; row < mapArr.length; row++) {
+			for (int col = 0; col < mapArr[row].length; col++) {
+				mapArr[row][col] = s.nextInt();
+				System.out.print(mapArr[row][col] + "\t");
+			}
+			System.out.println();
+		}
+		s.close();
 	}
 
 	// GUI
@@ -225,7 +263,6 @@ public class game extends PApplet {
 				mOY = mouseY - y;
 			}
 		}
-
 	}
 
 	public void weaponCreation() {
@@ -259,6 +296,7 @@ public class game extends PApplet {
 	}
 
 	public void mouseClicked() {
+		// SCENE SELECTION
 		if (Scene == 0 && dist(mouseX, 462, 527, 462) < 57 && dist(527, mouseY, 527, 462) < 23) {
 			exit();
 		}
@@ -273,7 +311,6 @@ public class game extends PApplet {
 			image(menu, 0, 0);
 			Scene = 0;
 		}
-
 	}
 
 	// ENEMY Class
@@ -301,7 +338,6 @@ public class game extends PApplet {
 		}
 
 		float moveX(float x, float y) {
-
 			if (y > 125 && x < 190 && y < 135) {
 				x = x + vel;
 				return x;
