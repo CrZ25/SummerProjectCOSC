@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import processing.core.*;
 
 public class game extends PApplet {
@@ -14,7 +13,7 @@ public class game extends PApplet {
 
 	boolean mLock = false; // for drag and drop
 	float x, y;
-	final int w = 10, h = 8;
+	final int ROWS = 16, COLS = 20;
 	ArrayList<Weapon> weaponArr = new ArrayList<Weapon>();
 	int count = 0;
 
@@ -25,13 +24,8 @@ public class game extends PApplet {
 	PImage[] mapTextures = new PImage[14];
 	int weapon;
 	// map array 1
-	int mapArr[][] = new int[8][10];
-	/*
-	 * { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 1, 1, 1, 1, 2, 0, 0, 0, 0, 0 }, { 3, 3,
-	 * 3, 3, 4, 5, 1, 1, 1, 1 }, { 6, 6, 7, 3, 4, 8, 3, 3, 3, 3 }, { 0, 0, 8, 3, 4,
-	 * 8, 3, 9, 6, 6 }, { 0, 0, 8, 3, 10, 11, 3, 4, 0, 0 }, { 0, 0, 8, 3, 3, 3, 3,
-	 * 4, 0, 0 }, { 0, 0, 12, 6, 6, 6, 6, 13, 0, 0 } };
-	 */
+	int mapArr[][] = new int[ROWS][COLS];
+	
 	// new int[w][h];
 
 	@Override
@@ -48,7 +42,7 @@ public class game extends PApplet {
 		smooth();
 
 		sideBar = loadImage("sideBar.png");
-		
+
 		// Load in Map Tiles
 		for (int i = 0; i < 14; i++) {
 			mapTextures[i] = loadImage("map" + i + ".png");
@@ -90,7 +84,8 @@ public class game extends PApplet {
 	}
 
 	public void draw() {
-		if (Scene == 1) {
+		switch (Scene) {
+		case 1:
 			try {
 				Scene1();
 			} catch (FileNotFoundException e) {
@@ -135,7 +130,10 @@ public class game extends PApplet {
 		// B.CreateEnemy();
 		x0 = A.moveX(x0, y0);
 		y0 = A.moveY(x0, y0);
-		print(x0, y0);
+		
+		// PRINT COORD OF ENEMY
+		// print(x0, y0);
+		
 		// x1=B.moveX(x1,y1);
 		// y1=B.moveY(x1,y1);
 		A.checkEnd();
@@ -143,7 +141,7 @@ public class game extends PApplet {
 
 		// display weapons when clicked
 		for (Weapon weap : weaponArr) {
-			weap.display();
+			weap.display(mouseX, mouseY, mousePressed);
 		}
 
 		count++;
@@ -167,7 +165,7 @@ public class game extends PApplet {
 				// System.out.print(mapArr[row][col] + "\t");
 				// print(mapArr[i][j] + ",\t"); // for debugging the array
 			}
-			// println();
+			// System.out.println();
 		}
 		// UI Sidebar
 		image(sideBar, 640, 0);
@@ -207,7 +205,7 @@ public class game extends PApplet {
 			break;
 		}
 	}
-
+/*
 	// WEAPON Class
 	// These are the Weapon Towers that the User can spawn in
 	public class Weapon {
@@ -237,7 +235,7 @@ public class game extends PApplet {
 
 		public void display() {
 			mPressed();
-			mouseDragged(this);
+			mouseClicked(this);
 			if (mouseX > x - y && mouseX < x + dragSpeed && mouseY > y - dragSpeed && mouseY < y + dragSpeed) {
 				mOver = true;
 				if (!mLocked) {
@@ -283,12 +281,12 @@ public class game extends PApplet {
 				weaponArr.add(new Weapon(mouseX, mouseY, 0));
 		}
 	}
-
+*/
 	public void mousePressed() {
-		weaponCreation();
+		new Weapon weaponCreation();
 	}
 
-	public void mouseDragged(Weapon weap) {
+	public void mouseClicked(Weapon weap) {
 		if (weap.mLocked) {
 			weap.x = mouseX - weap.mOX;
 			weap.y = mouseY - weap.mOY;
@@ -313,60 +311,5 @@ public class game extends PApplet {
 		}
 	}
 
-	// ENEMY Class
-	// These are the Enemies that the User attacks with the Weapon Towers
-	public class Enemy {
-		// enemy image
-		PImage e;
-		// enemy position
-		float x, y;
-		// enemy velocity
-		float vel;
-		// direction facing (radians)
-		float dirFacing;
-
-		Enemy(PImage e, float x, float y, float vel) {
-			this.e = e;
-			this.x = x;
-			this.y = y;
-			this.vel = vel;
-		}
-
-		void CreateEnemy() {
-			image(Health, x - 32, y - 50, 130, 86);
-			image(e, x, y);
-		}
-
-		float moveX(float x, float y) {
-			if (y > 125 && x < 190 && y < 135) {
-				x = x + vel;
-				return x;
-			} else if (y < 395 && y > 385) {
-				x = x + vel;
-				return x;
-			} else if (y > 185 && x > 385 && y < 195) {
-				x = x + vel;
-				return x;
-			}
-			return x;
-		}
-
-		float moveY(float x, float y) {
-			while (x < 195 && y < 390 && x > 185) {
-				y = y + vel;
-				return y;
-			}
-			while (x > 385 && x < 395) {
-				y = y - vel;
-				return y;
-			}
-			return y;
-		}
-
-		void checkEnd() {
-			if (x > 605) {
-				Scene = -10;
-			}
-		}
-	}
+	
 }
