@@ -13,7 +13,7 @@ public class game extends PApplet {
 
 	boolean mLock = false; // for drag and drop
 	float x, y;
-	final int ROWS = 16, COLS = 20;
+	final int ROWS = 8, COLS = 10;
 	ArrayList<Weapon> weaponArr = new ArrayList<Weapon>();
 	int count = 0;
 
@@ -25,7 +25,7 @@ public class game extends PApplet {
 	int weapon;
 	// map array 1
 	int mapArr[][] = new int[ROWS][COLS];
-	
+
 	// new int[w][h];
 
 	@Override
@@ -130,10 +130,10 @@ public class game extends PApplet {
 		// B.CreateEnemy();
 		x0 = A.moveX(x0, y0);
 		y0 = A.moveY(x0, y0);
-		
+
 		// PRINT COORD OF ENEMY
 		// print(x0, y0);
-		
+
 		// x1=B.moveX(x1,y1);
 		// y1=B.moveY(x1,y1);
 		A.checkEnd();
@@ -205,66 +205,48 @@ public class game extends PApplet {
 			break;
 		}
 	}
-/*
-	// WEAPON Class
-	// These are the Weapon Towers that the User can spawn in
-	public class Weapon {
-		// enemy position
-		float x, y;
-		// type of tower
-		int weaponType;
-		// enemy velocity
-		float vel;
-		// direction facing (radians)
-		float dirFacing;
 
-		// mouse over box movement
-		boolean mOver = false, mLocked = false;
-		int dragSpeed = 20;
-
-		// mouse over box vars
-		float mOX, mOY;
-
-		Weapon(int x, int y, int number) {
-			this.x = x - 64;
-			this.y = y;
-			weaponType = number;
-			mOX = (float) 0.0;
-			mOY = (float) 0.0;
-		}
-
-		public void display() {
-			mPressed();
-			mouseClicked(this);
-			if (mouseX > x - y && mouseX < x + dragSpeed && mouseY > y - dragSpeed && mouseY < y + dragSpeed) {
-				mOver = true;
-				if (!mLocked) {
-					// create indicator if mouse is over
-				}
-			} else {
-				// create reset indicator
-				mOver = false;
-			}
-
-			image(weapons[weaponType], x, y);
-		}
-
-		public void mPressed() {
-			if (mousePressed) {
-				if (mOver) {
-					mLocked = true;
-					fill(255, 255, 255);
-				} else {
-					mLocked = false;
-				}
-				mOX = mouseX - x;
-				mOY = mouseY - y;
-			}
-		}
+	/*
+	 * // WEAPON Class // These are the Weapon Towers that the User can spawn in
+	 * public class Weapon { // enemy position float x, y; // type of tower int
+	 * weaponType; // enemy velocity float vel; // direction facing (radians) float
+	 * dirFacing;
+	 * 
+	 * // mouse over box movement boolean mOver = false, mLocked = false; int
+	 * dragSpeed = 20;
+	 * 
+	 * // mouse over box vars float mOX, mOY;
+	 * 
+	 * Weapon(int x, int y, int number) { this.x = x - 64; this.y = y; weaponType =
+	 * number; mOX = (float) 0.0; mOY = (float) 0.0; }
+	 * 
+	 * public void display() { mPressed(); mouseClicked(this); if (mouseX > x - y &&
+	 * mouseX < x + dragSpeed && mouseY > y - dragSpeed && mouseY < y + dragSpeed) {
+	 * mOver = true; if (!mLocked) { // create indicator if mouse is over } } else {
+	 * // create reset indicator mOver = false; }
+	 * 
+	 * image(weapons[weaponType], x, y); }
+	 * 
+	 * public void mPressed() { if (mousePressed) { if (mOver) { mLocked = true;
+	 * fill(255, 255, 255); } else { mLocked = false; } mOX = mouseX - x; mOY =
+	 * mouseY - y; } } }
+	 * 
+	 * public void weaponCreation() { println(mouseX + ", " + mouseY); if (mouseX >=
+	 * 704 && mouseX <= 754 && mouseY >= 128 && mouseY <= 178) { if (mousePressed) {
+	 * weaponArr.add(new Weapon(mouseX, mouseY, 3)); } } else if (mouseX >= 640 &&
+	 * mouseX <= 690 && mouseY >= 128 && mouseY <= 178) { if (mousePressed) {
+	 * weaponArr.add(new Weapon(mouseX, mouseY, 2)); } } else if (mouseX >= 704 &&
+	 * mouseX <= 754 && mouseY >= 64 && mouseY <= 94) { if (mousePressed)
+	 * weaponArr.add(new Weapon(mouseX, mouseY, 1)); } else if (mouseX >= 640 &&
+	 * mouseX <= 690 && mouseY >= 64 && mouseY <= 94) { if (mousePressed)
+	 * weaponArr.add(new Weapon(mouseX, mouseY, 0)); } }
+	 */
+	public void mousePressed() {
+		weaponCreation();
 	}
 
 	public void weaponCreation() {
-		println(mouseX + ", " + mouseY);
+		System.out.println(mouseX + ", " + mouseY);
 		if (mouseX >= 704 && mouseX <= 754 && mouseY >= 128 && mouseY <= 178) {
 			if (mousePressed) {
 				weaponArr.add(new Weapon(mouseX, mouseY, 3));
@@ -280,10 +262,6 @@ public class game extends PApplet {
 			if (mousePressed)
 				weaponArr.add(new Weapon(mouseX, mouseY, 0));
 		}
-	}
-*/
-	public void mousePressed() {
-		new Weapon weaponCreation();
 	}
 
 	public void mouseClicked(Weapon weap) {
@@ -311,5 +289,4 @@ public class game extends PApplet {
 		}
 	}
 
-	
 }

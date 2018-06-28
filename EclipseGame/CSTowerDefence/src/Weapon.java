@@ -1,6 +1,6 @@
 // WEAPON Class
 // These are the Weapon Towers that the User can spawn in
-public class Weapon {
+public class Weapon extends game {
 	// enemy position
 	float x, y;
 	// type of tower
@@ -27,12 +27,12 @@ public class Weapon {
 
 	int mouseX, mouseY;
 	boolean mousePressed;
-	
+
 	public void display(int mouseX, int mouseY, boolean mousePressed) {
 		this.mouseX = mouseX;
 		this.mouseY = mouseY;
 		this.mousePressed = mousePressed;
-		
+
 		mPressed();
 		mouseClicked(this);
 		if (mouseX > x - y && mouseX < x + dragSpeed && mouseY > y - dragSpeed && mouseY < y + dragSpeed) {
@@ -58,26 +58,6 @@ public class Weapon {
 			}
 			mOX = mouseX - x;
 			mOY = mouseY - y;
-		}
-	}
-
-
-	public Weapon weaponCreation() {
-		System.out.println(mouseX + ", " + mouseY);
-		if (mouseX >= 704 && mouseX <= 754 && mouseY >= 128 && mouseY <= 178) {
-			if (mousePressed) {
-				weaponArr.add(new Weapon(mouseX, mouseY, 3));
-			}
-		} else if (mouseX >= 640 && mouseX <= 690 && mouseY >= 128 && mouseY <= 178) {
-			if (mousePressed) {
-				weaponArr.add(new Weapon(mouseX, mouseY, 2));
-			}
-		} else if (mouseX >= 704 && mouseX <= 754 && mouseY >= 64 && mouseY <= 94) {
-			if (mousePressed)
-				weaponArr.add(new Weapon(mouseX, mouseY, 1));
-		} else if (mouseX >= 640 && mouseX <= 690 && mouseY >= 64 && mouseY <= 94) {
-			if (mousePressed)
-				weaponArr.add(new Weapon(mouseX, mouseY, 0));
 		}
 	}
 

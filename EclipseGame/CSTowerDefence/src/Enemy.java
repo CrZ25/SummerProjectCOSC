@@ -2,7 +2,7 @@ import processing.core.PImage;
 
 // ENEMY Class
 // These are the Enemies that the User attacks with the Weapon Towers
-public class Enemy {
+public class Enemy extends game {
 	// enemy image
 	PImage e;
 	// enemy position
