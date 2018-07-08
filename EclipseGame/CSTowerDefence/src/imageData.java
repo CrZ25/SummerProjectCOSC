@@ -1,10 +1,10 @@
 import processing.core.*;
 
-public class imageData {
+public class ImageData {
 	float x, y;
-	PImage img;
+	int img;
 	
-	public imageData(PImage img, float x, float y) {
+	public ImageData(int img, float x, float y) {
 		super();
 		this.x = x;
 		this.y = y;
@@ -27,11 +27,11 @@ public class imageData {
 		this.y = y;
 	}
 
-	public PImage getImg() {
+	public int getImg() {
 		return img;
 	}
 
-	public void setImg(PImage img) {
+	public void setImg(int img) {
 		this.img = img;
 	}
 

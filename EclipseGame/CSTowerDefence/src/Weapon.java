@@ -21,9 +21,9 @@ public class Weapon extends game {
 	// mouse over box vars
 	float mOX, mOY;
 
-	Weapon(int x, int y, int weaponType) {
-		this.x = pa.mouseX - 64;
-		this.y = pa.mouseY;
+	Weapon(float x, float y, int weaponType) {
+		this.x = x - 64;
+		this.y = y;
 		this.weaponType = weaponType;
 		mOX = (float) 0.0;
 		mOY = (float) 0.0;
@@ -31,7 +31,7 @@ public class Weapon extends game {
 
 	boolean mousePressed;
 
-	public void display() {
+	public ImageData display() {
 		mPressed();
 		mouseClicked(this); // send over to create weapon in mouse clicked
 		if (mouseX > x - y && mouseX < x + dragSpeed && mouseY > y - dragSpeed && mouseY < y + dragSpeed) {
@@ -43,7 +43,8 @@ public class Weapon extends game {
 			// create reset indicator
 			mOver = false;
 		}
-		pa.image(weapons[weaponType], x, y);
+		// pa.image(weapons[weaponType], x, y);
+		return new ImageData(weaponType, x, y);
 	}
 
 	public void mPressed() {
