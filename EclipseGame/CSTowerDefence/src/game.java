@@ -227,7 +227,7 @@ public class game extends PApplet {
 		textSize(16);
 		text("$" + money, 670, 30);
 	}
-
+	
 	public void mousePressed() {
 		weaponCreation();
 	}
@@ -235,18 +235,34 @@ public class game extends PApplet {
 	public void weaponCreation() {
 		if (mouseX >= 710 && mouseX <= 763 && mouseY >= 134 && mouseY <= 187) {
 			if (mousePressed) {
-				weaponArr.add(new Weapon(mouseX, mouseY, 3));
+				if (money >= 400) {
+					money -= 400;
+					weaponArr.add(new Weapon(mouseX, mouseY, 3));
+				} else {
+					
+				}
 			}
 		} else if (mouseX >= 646 && mouseX <= 699 && mouseY >= 134 && mouseY <= 187) {
 			if (mousePressed) {
-				weaponArr.add(new Weapon(mouseX, mouseY, 2));
+				if (money >= 300) {
+					money -= 300;
+					weaponArr.add(new Weapon(mouseX, mouseY, 2));
+				}
 			}
 		} else if (mouseX >= 710 && mouseX <= 763 && mouseY >= 70 && mouseY <= 123) {
-			if (mousePressed)
-				weaponArr.add(new Weapon(mouseX, mouseY, 1));
+			if (mousePressed) {
+				if (money >= 200) {
+					money -= 200;
+					weaponArr.add(new Weapon(mouseX, mouseY, 1));
+				}
+			}
 		} else if (mouseX >= 646 && mouseX <= 699 && mouseY >= 70 && mouseY <= 123) {
-			if (mousePressed)
-				weaponArr.add(new Weapon(mouseX, mouseY, 0));
+			if (mousePressed) {
+				if (money >= 100) {
+					money -= 100;
+					weaponArr.add(new Weapon(mouseX, mouseY, 0));
+				}
+			}
 		}
 	}
 
