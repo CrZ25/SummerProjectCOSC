@@ -11,6 +11,8 @@ public class Enemy extends game {
 	float vel;
 	// direction facing (radians)
 	float dirFacing;
+	
+	boolean upState;
 
 	Enemy(PImage e, float x, float y, float vel) {
 		this.e = e;
@@ -19,34 +21,41 @@ public class Enemy extends game {
 		this.vel = vel;
 	}
 
-	void CreateEnemy() {
-		image(Health, x - 32, y - 50, 130, 86);
-		image(e, x, y);
+	ImageData CreateEnemy() {
+		// image(Health, x - 32, y - 50, 130, 86);
+		// image(enemies[0], x, y);
+		
+		return new ImageData(0, x, y);
 	}
 
 	float moveX(float x, float y) {
-		if (y > 125 && x < 190 && y < 135) {
-			x = x + vel;
-			return x;
-		} else if (y < 395 && y > 385) {
-			x = x + vel;
-			return x;
-		} else if (y > 185 && x > 385 && y < 195) {
-			x = x + vel;
-			return x;
+		int m = floor(x / 64);
+		int n = floor((y + 5) / 64);
+
+		if (m < COLS - 1 && n < ROWS - 1) {
+			if (mapArr[n][m + 1] == 3) {
+				x = x + vel;
+				return x;
+			}
 		}
 		return x;
 	}
 
 	float moveY(float x, float y) {
-		while (x < 195 && y < 390 && x > 185) {
-			y = y + vel;
-			return y;
+		int m = floor((x + 5) / 64);
+		int n = floor(y / 64);
+		if (m < COLS - 1 && n < ROWS - 1 && upState == true) {
+			if (mapArr[n + 1][m] == 3) {
+				y = y + vel;
+				return y;
+			}
+			if (mapArr[n - 1][m] == 3) {
+				y = y - vel;
+				upState = false;
+				return y;
+			}
 		}
-		while (x > 385 && x < 395) {
-			y = y - vel;
-			return y;
-		}
+
 		return y;
 	}
 

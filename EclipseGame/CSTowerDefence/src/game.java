@@ -139,19 +139,11 @@ public class game extends PApplet {
 		drawMap1();
 		drawWeapons(weapons.length);
 		Enemy A = new Enemy(enemies[0], x0, y0, 1);
-		// Enemy B = new Enemy(enemy1,x1, y1,3);
-		//// A.CreateEnemy();
-		// B.CreateEnemy();
+		iTmp = A.CreateEnemy();
+		image(enemies[iTmp.getImg()], iTmp.getX(), iTmp.getY());
 		x0 = A.moveX(x0, y0);
 		y0 = A.moveY(x0, y0);
-
-		// PRINT COORD OF ENEMY
-		// print(x0, y0);
-
-		// x1=B.moveX(x1,y1);
-		// y1=B.moveY(x1,y1);
 		A.checkEnd();
-		// B.checkEnd();
 		
 		// display weapons when clicked
 		for (Weapon weap : weaponArr) {
